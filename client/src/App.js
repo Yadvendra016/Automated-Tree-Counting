@@ -13,7 +13,7 @@ function App() {
         <Route path="/" element={<Home />} />
         <Route path="/organization/:username" element={<Profile />} />
       </Routes>
-      {/* <Footer /> */}
+      <Footer />
     </>
   );
 }

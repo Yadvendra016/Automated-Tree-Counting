@@ -1,18 +1,6 @@
 import React from "react";
 
 function Footer() {
-  // const myStyle = {
-  //   display: "flex",
-  //   flexDirection: "row",
-  //   justifyContent: "space-between",
-  //   alignItems: "center",
-  //   padding: "30px 100px 20px 100px",
-  //   background: "#f2f3f6",
-  //   position: "fixed",
-  //   bottom: "0",
-  //   left: "0",
-  //   width: "100%",
-  // };
 
   return (
     <div  className="flex flex-row justify-between justify-items-center items-center fixed bottom-0 bg-gray-200 left-0 w-full text-black px-24 pt-4 pb-2">
