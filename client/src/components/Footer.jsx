@@ -8,7 +8,6 @@ function Footer() {
     alignItems: "center",
     padding: "30px 100px 20px 100px",
     background: "#f2f3f6",
-    position: "fixed",
     bottom: "0",
     left: "0",
     width: "100%",
