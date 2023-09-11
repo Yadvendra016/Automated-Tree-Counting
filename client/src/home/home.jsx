@@ -1,8 +1,12 @@
 import React from "react";
 import "./home.css";
 import HomeContent from "../components/HomeContent";
+import { useAuth, useClerk } from "@clerk/clerk-react";
 
 function Home() {
+  const clerk = useClerk();
+  const { isSignedIn } = useAuth();
+
   return (
     <div className="container-fluid" style={{ paddingTop: "10px" }}>
       <div className="row">
@@ -36,19 +40,36 @@ function Home() {
                 🌍 Interactive Map View
               </li>
             </ul>
-            <button
-              className="btn btn-primary"
-              style={{
-                marginTop: "2em",
-                backgroundColor: "#0d1fa1",
-                color: "#fff",
-                fontWeight: "bold",
-                padding: "10px 25px",
-                transition: "background-color 0.3s, color 0.3s",
-              }}
-            >
-              Register to Get Started
-            </button>
+            {isSignedIn ? (
+              <button
+                className="btn btn-primary"
+                style={{
+                  marginTop: "2em",
+                  backgroundColor: "#0d1fa1",
+                  color: "#fff",
+                  fontWeight: "bold",
+                  padding: "10px 25px",
+                  transition: "background-color 0.3s, color 0.3s",
+                }}
+              >
+                Ready to upload Image
+              </button>
+            ) : (
+              <button
+                className="btn btn-primary"
+                onClick={() => clerk.openSignIn({})}
+                style={{
+                  marginTop: "2em",
+                  backgroundColor: "#0d1fa1",
+                  color: "#fff",
+                  fontWeight: "bold",
+                  padding: "10px 25px",
+                  transition: "background-color 0.3s, color 0.3s",
+                }}
+              >
+                Register to Get Started
+              </button>
+            )}
           </div>
         </div>
 
