@@ -2,6 +2,7 @@ import React from "react";
 import "./home.css";
 import HomeContent from "../components/HomeContent";
 import { useAuth, useClerk } from "@clerk/clerk-react";
+import { Link } from "react-router-dom";
 
 function Home() {
   const clerk = useClerk();
@@ -41,19 +42,21 @@ function Home() {
               </li>
             </ul>
             {isSignedIn ? (
-              <button
-                className="btn btn-primary"
-                style={{
-                  marginTop: "2em",
-                  backgroundColor: "#0d1fa1",
-                  color: "#fff",
-                  fontWeight: "bold",
-                  padding: "10px 25px",
-                  transition: "background-color 0.3s, color 0.3s",
-                }}
-              >
-                Ready to upload Image
-              </button>
+              <Link to="/image-upload">
+                <button
+                  className="btn btn-primary"
+                  style={{
+                    marginTop: "2em",
+                    backgroundColor: "#0d1fa1",
+                    color: "#fff",
+                    fontWeight: "bold",
+                    padding: "10px 25px",
+                    transition: "background-color 0.3s, color 0.3s",
+                  }}
+                >
+                  Ready to upload Image
+                </button>
+              </Link>
             ) : (
               <button
                 className="btn btn-primary"
