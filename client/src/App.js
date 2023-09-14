@@ -22,7 +22,7 @@ function App() {
         <Route path="/image-upload" element={<ImpageUpload />} />
         <Route path="/result" element={<Result />} />
       </Routes>
-      <Footer />
+      {/* <Footer /> */}
     </>
   );
 }

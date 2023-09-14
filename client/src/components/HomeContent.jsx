@@ -101,7 +101,8 @@ function HomeContent() {
               >
                 🌳
               </span>
-              one tree at a time.
+              In the world of algorithms, hashtags, and followers, remember the
+              importance of genuine human connections
             </div>
           </div>
         </div>

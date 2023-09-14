@@ -5,6 +5,11 @@ import "./Upload.css";
 
 const ImpageUpload = () => {
   const [uploadedFile, setUploadedFile] = useState(null);
+  const [projectDetails, setProjectDetails] = useState({
+    title: "",
+    description: "",
+    location: "",
+  });
   const { getRootProps, getInputProps, isDragActive } = useDropzone({
     onDrop: (acceptedFiles) => {
       const file = acceptedFiles[0];
@@ -12,7 +17,17 @@ const ImpageUpload = () => {
     },
   });
 
+  // Get the current date in the "YYYY-MM-DD" format
+  const currentDate = new Date().toISOString().split("T")[0];
+
   const uploadBoxClass = `upload-box ${isDragActive ? "drag-active" : ""}`;
+
+  //on Submit
+  const onImageSubmit = async (e) => {
+    e.preventDefault();
+    console.log("uploaded file is =>", uploadedFile);
+    console.log("description is =>", projectDetails);
+  };
 
   return (
     <div className="container-fluid vh-100" style={{ paddingTop: "70px" }}>
@@ -46,7 +61,10 @@ const ImpageUpload = () => {
           </div>
           {/* Start analysis button */}
           <div className="d-flex mt-10 justify-content-center">
-            <button className="btn w-72 p-2 btn-primary start-analysis-button">
+            <button
+              onClick={onImageSubmit}
+              className="btn w-72 p-2 btn-primary start-analysis-button"
+            >
               Start Analysis
             </button>
           </div>
@@ -60,6 +78,12 @@ const ImpageUpload = () => {
                 Project Title
               </label>
               <input
+                onChange={(e) =>
+                  setProjectDetails({
+                    ...projectDetails,
+                    title: e.target.value,
+                  })
+                }
                 type="text"
                 className="form-control"
                 id="projectTitle"
@@ -71,6 +95,12 @@ const ImpageUpload = () => {
                 Location
               </label>
               <input
+                onChange={(e) =>
+                  setProjectDetails({
+                    ...projectDetails,
+                    location: e.target.value,
+                  })
+                }
                 type="text"
                 className="form-control"
                 id="location"
@@ -79,12 +109,14 @@ const ImpageUpload = () => {
             </div>
             <div className="mb-3">
               <label htmlFor="dateTime" className="form-label">
-                Date and Time
+                Date
               </label>
               <input
-                type="datetime-local"
+                type="date"
                 className="form-control"
                 id="dateTime"
+                defaultValue={currentDate}
+                readOnly
               />
             </div>
             <div className="mb-3">
@@ -92,6 +124,12 @@ const ImpageUpload = () => {
                 Project Description
               </label>
               <textarea
+                onChange={(e) =>
+                  setProjectDetails({
+                    ...projectDetails,
+                    description: e.target.value,
+                  })
+                }
                 className="form-control"
                 id="projectDescription"
                 rows="4"
